@@ -15,8 +15,23 @@ int GF(int a, int b){
         a <<= 1;
         if(a & 16)
             a ^= 19;
-        
+        b >>=1;
     }
+    return resultado & 15;
+}
+
+int subNibble(int chave){
+    return (sbox[chave >> 4 << 4] | sbox[chave & 15]);
+}
+int subNibble16(int chave){
+    int resultado = 0;
+    for(int i = 0; i < 4; i++){
+        resultado |= (sbox[(chave >> (i * 4)) & 15] << (i * 4));
+    }
+    return resultado;
+}
+int giraNibble(int nibble){
+    return (nibble << 4) | (nibble >> 4);
 }
 
 int addRoundKey(int estado_atual, int k0, int k1){
