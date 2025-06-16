@@ -44,14 +44,6 @@ int giraNibble(int nibble){
     return (nibble << 4) | (nibble >> 4);
 }
 
-int subNibble16(int chave){
-    int resultado = 0;
-    for(int i = 0; i < 4; i++){
-        resultado |= (sbox[(chave >> (i * 4)) & 15] << (i * 4));
-    }
-    return resultado;
-}
-
 vector<int> expansaoChave(int chave){
     vector<int> v(6, 0);
     v[0] = (chave >> 8) & 255; //byte mais significativo
