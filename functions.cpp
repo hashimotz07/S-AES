@@ -31,7 +31,7 @@ int mixColumns(int estado){
     int t2 = GF(4, s0) ^ GF(1, s2);
     int t3 = GF(4, s1) ^ GF(1, s3);
 
-    return (t0 << 12) | (t1 << 8) | (t2 << 4) | t3;
+    return ((t0 << 12) | (t1 << 8) | (t2 << 4) | t3);
 }
 
 //substitui 2 nibbles
