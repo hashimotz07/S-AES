@@ -100,7 +100,7 @@ int main(){
 
     string texto = blocosParaString(box);
     SecByteBlock chaveCrypto(16);
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {   
         chaveCrypto[i*2] = (chave >> 8) & 0xFF;
         chaveCrypto[i*2+1] = chave & 0xFF;
     }

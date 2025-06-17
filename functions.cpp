@@ -5,6 +5,7 @@ using namespace std;
 //s-box
 vector<int> sbox{9, 4, 10, 11, 13, 1, 8, 5, 6, 2, 0, 3, 12, 14, 15, 7};
 
+//galois field 16 elementos
 int GF(int a, int b){
     int resultado = 0;
     while(b){
@@ -20,6 +21,7 @@ int GF(int a, int b){
     return resultado & 15;
 }
 
+//mistura os dados dentro de uma coluna
 int mixColumns(int estado){
     int s0 = (estado >> 12) & 15;
     int s1 = (estado >> 8) & 15;
@@ -44,6 +46,7 @@ int giraNibble(int nibble){
     return (nibble << 4) | (nibble >> 4);
 }
 
+//
 vector<int> expansaoChave(int chave){
     vector<int> v(6, 0);
     v[0] = (chave >> 8) & 255; //byte mais significativo
@@ -58,6 +61,7 @@ vector<int> expansaoChave(int chave){
     return v;
 }
 
+//
 int shiftRows(int input){
     int s0 = (input >> 12) & 15;
     int s1 = (input >> 8) & 15;
@@ -67,6 +71,7 @@ int shiftRows(int input){
     return (s0 << 12) | (s3 << 8) | (s2 << 4) | s1; 
 }
 
+//
 int addRoundKey(int estado_atual, int k0, int k1){
     int chave = (k0 << 8) | k1; //subchave
     return estado_atual ^ chave; 
